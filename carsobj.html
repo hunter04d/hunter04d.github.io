@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The *.carsobj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+</head>
+<style>
+    .ts1 {
+        display: block;
+        margin-left: 1.5rem;
+    }
+    .ts2 {
+        display: block;
+        margin-left: 3rem;
+    }
+</style>
+
+<body>
+    <div class="container ">
+        <h1 class="center-align">Introducing *.carsobj</h1>
+        <h2 class="center-align">The java lab8 serialization format</h2>
+        <p>
+            The *.casrobj (car $ object) is the newline terminated serialization format. Annoyed at how json is too readable and simple?
+            Fear not the new notation is here. The format is completely language and data agnoctic and it was designed with
+            no standardization in mind.
+        </p>
+        <h6>It consinst from 3 main data points:</h6>
+        <ol class="collection">
+            <li class="collection-item">
+                Fields: the simple data that you cary.
+                <br> The field notation is as follows
+                <em> field:= name '$' value '\n'</em>
+            </li>
+            <li class="collection-item">
+                Objects - the collection of fields or other objects. Used to represent complex data.
+                <br> The object notation is:
+                <em>object := name '\n' (object|field|collection)* '\n'</em>
+            </li>
+            <li class="collection-item">
+                Collection - the collection of objects. Each collection is prefixed with the number of values in it for simplicity, and additionally
+                by name, should you require one.
+                <br> The array notation is:
+                <em>collection := number '\n' (name '\n')? '[' (object)* ']' '\n'</em>
+            </li>
+
+        </ol>
+        <p>
+            These are universal data structures. Virtually all modern programming languages support them in one form or another. It makes
+            sense that a data format that is interchangeable with programming languages also be based on these structures.
+        </p>
+        <h6>Examples:</h6>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Simple object:</span>
+                        <code style=" white-space: pre-line;">
+                            CarIdentity
+                            <span class="ts1">Manufacturer $Kia 
+                            Model $Sportage 
+                            Year $2015 </span>
+                    </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">More complext object:</span>
+                        <code style=" white-space: pre-line;">
+                                    SuperCar
+                                    <span class="ts1">CarIdentity
+                                       <span class="ts2">Manufacturer $Pagani
+                                        Model $Huayra
+                                        Year $2012 
+                                       </span>Engine
+                                    <span class="ts2">Fuel Consumption $12.2
+                                        Horse Power $730
+                                    </span>Price $1375500
+                                    Max Speed $370
+                                    Seats $2
+                                    Automatic $true
+                                    Turbo Boosted $true
+                                    Special Edition $true
+                                    </span>
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Collection:</span>
+                            <code style=" white-space: pre-line;">
+                                        1
+                                        Cars
+                                        [
+                                        SuperCar
+                                        <span class="ts1">CarIdentity
+                                           <span class="ts2">Manufacturer $Pagani
+                                            Model $Huayra
+                                            Year $2012 
+                                           </span>Engine
+                                        <span class="ts2">Fuel Consumption $12.2
+                                            Horse Power $730
+                                        </span>Price $1375500
+                                        Max Speed $370
+                                        Seats $2
+                                        Automatic $true
+                                        Turbo Boosted $true
+                                        Special Edition $true
+                                        </span>
+                                        ]
+
+                            </code>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+
+</html>
